@@ -1,37 +1,60 @@
 <div *ngIf="!coins.length">
   <i>Loading...</i>
 </div>
-<table *ngIf="coins.length">
-  <tr>
-    <th>rank</th>
-    <th>name</th>
-    <th>symbol</th>
-    <th>price_usd</th>
-    <th>market_cap_usd</th>
-    <th>market_share</th>
-    <th>24h_volume_usd</th>
-    <th>available_supply</th>
-    <th>total_supply</th>
-    <th>max_supply</th>
-    <th>percent_change_1h</th>
-    <th>percent_change_24h</th>
-    <th>percent_change_7d</th>
-    <th>last_updated</th>
-  </tr>
-  <tr  *ngFor="let coin of coins;">
-    <td>{{coin.rank}}</td>
-    <td>{{coin.name}}</td>
-    <td>{{coin.symbol}}</td>
-    <td>{{coin.price_usd | excelNumber}}</td>
-    <td>{{coin.market_cap_usd | excelNumber}}</td>
-    <td>{{coin.marketShare | excelNumber}}</td>
-    <td>{{coin['24h_volume_usd'] | excelNumber}}</td>
-    <td>{{coin.available_supply | excelNumber}}</td>
-    <td>{{coin.total_supply | excelNumber}}</td>
-    <td>{{coin.max_supply | excelNumber}}</td>
-    <td>{{coin.percent_change_1h | excelNumber}}</td>
-    <td>{{coin.percent_change_24h | excelNumber}}</td>
-    <td>{{coin.percent_change_7d | excelNumber}}</td>
-    <td>{{coin.last_updated}}</td>
-  </tr>
-</table>
+
+<div *ngIf="coins.length">
+
+  <!--<div>-->
+  <!--</div>-->
+
+  <!--<table border="1">-->
+    <!--<tr>-->
+      <!--<th>rank</th>-->
+      <!--<th>name</th>-->
+      <!--<th>symbol</th>-->
+      <!--<th>price_usd</th>-->
+      <!--<th>market_share</th>-->
+      <!--<th>my coins</th>-->
+    <!--</tr>-->
+    <!--<tr  *ngFor="let coin of coins;">-->
+      <!--<td>{{coin.rank}}</td>-->
+      <!--<td>{{coin.name}}</td>-->
+      <!--<td>{{coin.symbol}}</td>-->
+      <!--<td class="text-right">{{coin.price_usd | currency}}</td>-->
+      <!--<td class="text-right">{{coin.marketShare | percent:'2.2'}}</td>-->
+      <!--<td class="text-right"></td>-->
+    <!--</tr>-->
+  <!--</table>-->
+
+  <mat-table #table [dataSource]="matTableDataSource">
+
+    <!-- rank Column -->
+    <ng-container matColumnDef="rank">
+      <mat-header-cell *matHeaderCellDef> Rank </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.rank}} </mat-cell>
+    </ng-container>
+
+    <!-- rank Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <!-- rank Column -->
+    <ng-container matColumnDef="symbol">
+      <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+    </ng-container>
+
+    <!-- rank Column -->
+    <ng-container matColumnDef="price_usd">
+      <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.price_usd | currency}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="matTableDisplayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: matTableDisplayedColumns;"></mat-row>
+
+  </mat-table>
+
+</div>
