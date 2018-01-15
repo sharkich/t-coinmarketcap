@@ -19,7 +19,7 @@ export class PortfolioComponent implements OnInit {
   portfolios: Portfolio[] = [];
 
   @ViewChild(MatSort) sort: MatSort;
-  matTableDisplayedColumns = ['coinId', 'name', 'amount', 'buyPrice', 'buySum', 'currentPrice', 'currentSum', 'goalPercentage', 'currentPercentage', 'description'];
+  matTableDisplayedColumns = ['coinId', 'name', 'amount', 'buyPrice', 'buySum', 'currentPrice', 'currentSum', 'goalPercentage', 'currentPercentage', 'description', 'buttons'];
   matTableDataSource: MatTableDataSource<Portfolio> = new MatTableDataSource<Portfolio>(this.portfolios);
 
   constructor(private portfoliosService: PortfoliosService,
@@ -47,7 +47,7 @@ export class PortfolioComponent implements OnInit {
     this.matTableDataSource.filter = filterValue;
   }
 
-  onClickRow(coin: Coin) {
+  onClickEdit(coin: Coin) {
     const dialogRef = this.dialog.open(AddCoinToPortfolioDialogComponent, {
       data: { coin }
     });
@@ -56,6 +56,10 @@ export class PortfolioComponent implements OnInit {
       console.log('edit', portfolio);
       // this.portfoliosService.edit(portfolio);
     });
+  }
+
+  onRecalculateBuyPrices() {
+
   }
 
 }

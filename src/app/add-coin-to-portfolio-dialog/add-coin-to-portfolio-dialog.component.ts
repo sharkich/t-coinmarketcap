@@ -23,7 +23,4 @@ export class AddCoinToPortfolioDialogComponent {
     this.dialogRef.close();
   }
 
-  applyFilter() {
-  }
-
 }

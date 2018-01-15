@@ -5,7 +5,7 @@ import 'rxjs/Rx';
 
 import {Coin} from '../../../coin';
 
-const COINMARKET_URL = 'https://api.coinmarketcap.com/v1/ticker/?limit=1000';
+const COINMARKET_URL = 'https://api.coinmarketcap.com/v1/ticker/?limit=100';
 
 @Injectable()
 export class CoinsService {

@@ -48,11 +48,15 @@
         <mat-cell *matCellDef="let element"> {{element.marketShare | percent:'1.4'}}</mat-cell>
       </ng-container>
 
-      <mat-header-row *matHeaderRowDef="matTableDisplayedColumns"></mat-header-row>
+      <ng-container matColumnDef="buttons">
+        <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+        <mat-cell *matCellDef="let element" class="buttons">
+          <button mat-icon-button (click)="onClickAdd(element)"><i class="material-icons">add</i></button>
+        </mat-cell>
+      </ng-container>
 
-      <mat-row
-        *matRowDef="let row; columns: matTableDisplayedColumns;"
-        (click)="onClickRow(row)"></mat-row>
+      <mat-header-row *matHeaderRowDef="matTableDisplayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: matTableDisplayedColumns;"></mat-row>
 
     </mat-table>
 

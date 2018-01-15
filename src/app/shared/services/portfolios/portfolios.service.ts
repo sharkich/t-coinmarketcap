@@ -191,7 +191,9 @@ export class PortfoliosService {
       if (!portfolio.coin) {
         portfolio.coin = this.coins.find((coin) => coin.id === portfolio.coinId);
       }
-      portfolio.currentPrice = portfolio.coin.price_usd;
+      if (portfolio.coin) {
+        portfolio.currentPrice = portfolio.coin.price_usd;
+      }
       portfolio.currentSum = portfolio.amount * portfolio.currentPrice;
       portfolio.buySum = portfolio.amount * portfolio.buyPrice;
     });

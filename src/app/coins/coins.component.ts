@@ -17,7 +17,7 @@ export class CoinsComponent implements OnInit {
   coins: Coin[] = [];
 
   @ViewChild(MatSort) sort: MatSort;
-  matTableDisplayedColumns = ['rank', 'image', 'name', 'symbol', 'price_usd', 'marketShare'];
+  matTableDisplayedColumns = ['rank', 'image', 'name', 'symbol', 'price_usd', 'marketShare', 'buttons'];
   matTableDataSource: MatTableDataSource<Coin> = new MatTableDataSource<Coin>(this.coins);
 
   constructor(private coinsService: CoinsService,
@@ -39,7 +39,7 @@ export class CoinsComponent implements OnInit {
     this.matTableDataSource.filter = filterValue;
   }
 
-  onClickRow(coin: Coin) {
+  onClickAdd(coin) {
     const dialogRef = this.dialog.open(AddCoinToPortfolioDialogComponent, {
       data: { coin }
     });
