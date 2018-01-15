@@ -1,0 +1,19 @@
+.mat-header-cell.mat-sort-header-sorted {
+  color: black;
+}
+
+.app-coins {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.app-filtering {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}

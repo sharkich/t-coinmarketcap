@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
-import {Coin} from 'app/coin';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
+
+import {Coin} from '../../coin';
 
 const COINMARKET_URL = 'https://api.coinmarketcap.com/v1/ticker/';
 
