@@ -17,9 +17,10 @@ import {CoinsService} from './shared/services/coins/coins.service';
 import {PortfolioComponent} from './portfolio/portfolio.component';
 import {CoinsComponent} from './coins/coins.component';
 import {ROUTES} from './app.routes';
-import { AddCoinToPortfolioDialogComponent } from './add-coin-to-portfolio-dialog/add-coin-to-portfolio-dialog.component';
+import {AddCoinToPortfolioDialogComponent} from './shared/dialogs/add-coin-to-portfolio-dialog/add-coin-to-portfolio-dialog.component';
 import {FormsModule} from '@angular/forms';
 import {PortfoliosService} from './shared/services/portfolios/portfolios.service';
+import {RecalculateBuyPricesComponent} from './shared/dialogs/recalculate-buy-prices/recalculate-buy-prices.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {PortfoliosService} from './shared/services/portfolios/portfolios.service
     ExcelNumberPipe,
     PortfolioComponent,
     CoinsComponent,
-    AddCoinToPortfolioDialogComponent
+    AddCoinToPortfolioDialogComponent,
+    RecalculateBuyPricesComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -56,7 +58,8 @@ import {PortfoliosService} from './shared/services/portfolios/portfolios.service
     PortfoliosService
   ],
   entryComponents: [
-    AddCoinToPortfolioDialogComponent
+    AddCoinToPortfolioDialogComponent,
+    RecalculateBuyPricesComponent
   ],
   bootstrap: [AppComponent]
 })

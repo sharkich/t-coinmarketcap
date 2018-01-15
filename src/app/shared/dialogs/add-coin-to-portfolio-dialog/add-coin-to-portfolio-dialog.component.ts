@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {Coin} from '../coin';
-import {Portfolio} from '../portfolio';
+import {Coin} from '../../../coin';
+import {Portfolio} from '../../../portfolio';
 
 @Component({
   selector: 'app-add-coin-to-portfolio-dialog',

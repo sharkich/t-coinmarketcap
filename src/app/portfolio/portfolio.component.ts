@@ -3,8 +3,9 @@ import {MatDialog, MatSort, MatTableDataSource} from '@angular/material';
 import {Portfolio} from '../portfolio';
 import {Coin} from '../coin';
 import {PortfoliosService} from '../shared/services/portfolios/portfolios.service';
-import {AddCoinToPortfolioDialogComponent} from '../add-coin-to-portfolio-dialog/add-coin-to-portfolio-dialog.component';
+import {AddCoinToPortfolioDialogComponent} from '../shared/dialogs/add-coin-to-portfolio-dialog/add-coin-to-portfolio-dialog.component';
 import {CoinsService} from '../shared/services/coins/coins.service';
+import {RecalculateBuyPricesComponent} from '../shared/dialogs/recalculate-buy-prices/recalculate-buy-prices.component';
 
 @Component({
   selector: 'app-portfolio',
@@ -59,7 +60,11 @@ export class PortfolioComponent implements OnInit {
   }
 
   onRecalculateBuyPrices() {
+    const dialogRef = this.dialog.open(RecalculateBuyPricesComponent, {});
 
+    dialogRef.afterClosed().subscribe((sum: Portfolio) => {
+      console.log('recalculate', sum);
+    });
   }
 
 }

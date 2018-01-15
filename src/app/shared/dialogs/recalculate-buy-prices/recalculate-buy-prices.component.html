@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Recalculate buy sums</h1>
+<div mat-dialog-content>
+  <p>Enter buy sum for recalculate each currency byt price</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="sum" required placeholder="Sum">
+  </mat-form-field>
+  <mat-form-field>
+    USD
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="sum" cdkFocusInitial [disabled]="!sum">OK</button>
+</div>

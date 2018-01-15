@@ -3,7 +3,7 @@ import {MatDialog, MatSort, MatTableDataSource} from '@angular/material';
 
 import {Coin} from '../coin';
 import {CoinsService} from '../shared/services/coins/coins.service';
-import {AddCoinToPortfolioDialogComponent} from '../add-coin-to-portfolio-dialog/add-coin-to-portfolio-dialog.component';
+import {AddCoinToPortfolioDialogComponent} from '../shared/dialogs/add-coin-to-portfolio-dialog/add-coin-to-portfolio-dialog.component';
 import {Portfolio} from '../portfolio';
 import {PortfoliosService} from '../shared/services/portfolios/portfolios.service';
 

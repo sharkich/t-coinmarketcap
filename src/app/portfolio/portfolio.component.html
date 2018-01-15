@@ -68,7 +68,7 @@
 
       <ng-container matColumnDef="buttons">
         <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
-        <mat-cell *matCellDef="let element">
+        <mat-cell *matCellDef="let element" class="buttons">
           <button mat-icon-button (click)="onClickEdit(element)"><i class="material-icons">edit</i></button>
         </mat-cell>
       </ng-container>
