@@ -16,6 +16,7 @@ export class Coin {
   last_updated: Date;
 
   marketShare: number;
+  image: string;
 
   constructor(data) {
     this.id = data.id;
@@ -35,5 +36,6 @@ export class Coin {
     this.last_updated = new Date(+data.last_updated);
 
     this.marketShare = +data.marketShare;
+    this.image = data.image;
   }
 }

@@ -1,60 +1,49 @@
-<div *ngIf="!coins.length">
-  <i>Loading...</i>
-</div>
+<div class="app-container mat-elevation-z8">
 
-<div *ngIf="coins.length">
+  <div *ngIf="!coins.length">
+    <i>Loading...</i>
+  </div>
 
-  <!--<div>-->
-  <!--</div>-->
+  <div *ngIf="coins.length">
 
-  <!--<table border="1">-->
-    <!--<tr>-->
-      <!--<th>rank</th>-->
-      <!--<th>name</th>-->
-      <!--<th>symbol</th>-->
-      <!--<th>price_usd</th>-->
-      <!--<th>market_share</th>-->
-      <!--<th>my coins</th>-->
-    <!--</tr>-->
-    <!--<tr  *ngFor="let coin of coins;">-->
-      <!--<td>{{coin.rank}}</td>-->
-      <!--<td>{{coin.name}}</td>-->
-      <!--<td>{{coin.symbol}}</td>-->
-      <!--<td class="text-right">{{coin.price_usd | currency}}</td>-->
-      <!--<td class="text-right">{{coin.marketShare | percent:'2.2'}}</td>-->
-      <!--<td class="text-right"></td>-->
-    <!--</tr>-->
-  <!--</table>-->
+    <div class="app-filtering">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+    </div>
 
-  <mat-table #table [dataSource]="matTableDataSource">
+    <mat-table #table [dataSource]="matTableDataSource" matSort>
 
-    <!-- rank Column -->
-    <ng-container matColumnDef="rank">
-      <mat-header-cell *matHeaderCellDef> Rank </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.rank}} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="rank">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Rank</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.rank}}</mat-cell>
+      </ng-container>
 
-    <!-- rank Column -->
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="image">
+        <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+        <mat-cell *matCellDef="let element"> <img [src]="element.image" width="32" height="32" [alt]="element.name"> </mat-cell>
+      </ng-container>
 
-    <!-- rank Column -->
-    <ng-container matColumnDef="symbol">
-      <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Name</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
 
-    <!-- rank Column -->
-    <ng-container matColumnDef="price_usd">
-      <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.price_usd | currency}} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="symbol">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Symbol</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.symbol}}</mat-cell>
+      </ng-container>
 
-    <mat-header-row *matHeaderRowDef="matTableDisplayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: matTableDisplayedColumns;"></mat-row>
+      <ng-container matColumnDef="price_usd">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Price</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.price_usd | currency}}</mat-cell>
+      </ng-container>
 
-  </mat-table>
+      <mat-header-row *matHeaderRowDef="matTableDisplayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: matTableDisplayedColumns;"></mat-row>
+
+    </mat-table>
+
+  </div>
 
 </div>

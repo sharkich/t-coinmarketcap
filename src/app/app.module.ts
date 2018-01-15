@@ -4,11 +4,12 @@ import {HttpClientModule} from '@angular/common/http';
 
 // Material
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatTableModule} from '@angular/material';
+import {MatFormFieldModule, MatSortModule, MatTableModule, MatInputModule} from '@angular/material';
 import {CdkTableModule} from '@angular/cdk/table';
 
 import {AppComponent} from './app.component';
-import {ExcelNumberPipe} from './excel-pipe/excel-number.pipe';
+import {ExcelNumberPipe} from './shared/pipes/excel-pipe/excel-number.pipe';
+import {CoinsService} from './shared/services/coins.service';
 
 @NgModule({
   declarations: [
@@ -19,12 +20,17 @@ import {ExcelNumberPipe} from './excel-pipe/excel-number.pipe';
     BrowserModule,
 
     BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
     CdkTableModule,
     MatTableModule,
+    MatSortModule,
 
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    CoinsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

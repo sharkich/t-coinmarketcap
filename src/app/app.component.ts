@@ -1,11 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {Component, OnInit, ViewChild} from "@angular/core";
 
-import {MatTableDataSource} from '@angular/material';
+import {MatTableDataSource, MatSort} from '@angular/material';
 
 import {Coin} from './coin';
-
-const COINMARKET_URL = 'https://api.coinmarketcap.com/v1/ticker/';
+import {CoinsService} from './shared/services/coins.service';
 
 @Component({
   selector: 'app-root',
@@ -15,28 +13,27 @@ const COINMARKET_URL = 'https://api.coinmarketcap.com/v1/ticker/';
 export class AppComponent implements OnInit {
 
   coins: Coin[] = [];
-  marketVolume = 0;
 
-  matTableDisplayedColumns = ['rank', 'name', 'symbol', 'price_usd'];
-  matTableDataSource: MatTableDataSource<Coin>;
+  @ViewChild(MatSort) sort: MatSort;
+  matTableDisplayedColumns = ['rank', 'image', 'name', 'symbol', 'price_usd'];
+  matTableDataSource: MatTableDataSource<Coin> = new MatTableDataSource<Coin>(this.coins);
 
-  constructor(private http: HttpClient) {
+  constructor(private coinsService: CoinsService) {
   }
 
   ngOnInit() {
-    this.http.get(COINMARKET_URL).subscribe((resp: any[]) => {
-      this.coins = resp.map((data) => {
-        const coin = new Coin(data);
-        this.marketVolume += (+coin.market_cap_usd);
-        return coin;
-      });
-
-      this.coins.forEach((coin: Coin) => {
-        coin.marketShare = (+coin.market_cap_usd) / this.marketVolume;
-      });
-
+    this.coinsService.coins().subscribe((coins: Coin[]) => {
+      console.log('coins', coins);
+      this.coins = coins;
       this.matTableDataSource = new MatTableDataSource<Coin>(this.coins);
+      this.matTableDataSource.sort = this.sort;
     });
+  }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.matTableDataSource.filter = filterValue;
   }
 
 }
