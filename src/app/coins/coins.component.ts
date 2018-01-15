@@ -2,8 +2,10 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatDialog, MatSort, MatTableDataSource} from '@angular/material';
 
 import {Coin} from '../coin';
-import {CoinsService} from '../shared/services/coins.service';
+import {CoinsService} from '../shared/services/coins/coins.service';
 import {AddCoinToPortfolioDialogComponent} from '../add-coin-to-portfolio-dialog/add-coin-to-portfolio-dialog.component';
+import {Portfolio} from '../portfolio';
+import {PortfoliosService} from '../shared/services/portfolios/portfolios.service';
 
 @Component({
   selector: 'app-coins',
@@ -19,10 +21,11 @@ export class CoinsComponent implements OnInit {
   matTableDataSource: MatTableDataSource<Coin> = new MatTableDataSource<Coin>(this.coins);
 
   constructor(private coinsService: CoinsService,
+              private portfoliosService: PortfoliosService,
               public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.coinsService.coins().subscribe((coins: Coin[]) => {
+    this.coinsService.list().subscribe((coins: Coin[]) => {
       console.log('coins', coins);
       this.coins = coins;
       this.matTableDataSource = new MatTableDataSource<Coin>(this.coins);
@@ -37,13 +40,12 @@ export class CoinsComponent implements OnInit {
   }
 
   onClickRow(coin: Coin) {
-    console.log('select coin', coin);
     const dialogRef = this.dialog.open(AddCoinToPortfolioDialogComponent, {
       data: { coin }
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('result', result);
+    dialogRef.afterClosed().subscribe((portfolio: Portfolio) => {
+      this.portfoliosService.add(portfolio);
     });
   }
 

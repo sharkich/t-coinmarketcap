@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
 
-import {Coin} from '../../coin';
+import {Coin} from '../../../coin';
 
 const COINMARKET_URL = 'https://api.coinmarketcap.com/v1/ticker/';
 
@@ -15,7 +15,7 @@ export class CoinsService {
   constructor(private http: HttpClient) {
   }
 
-  coins(): Observable<Coin[]> {
+  list(): Observable<Coin[]> {
     return this.http.get(COINMARKET_URL)
       .map((resp: any[]) => {
         const list = resp.map((data) => {

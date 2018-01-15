@@ -13,12 +13,13 @@ import {CdkTableModule} from '@angular/cdk/table';
 
 import {AppComponent} from './app.component';
 import {ExcelNumberPipe} from './shared/pipes/excel-pipe/excel-number.pipe';
-import {CoinsService} from './shared/services/coins.service';
+import {CoinsService} from './shared/services/coins/coins.service';
 import {PortfolioComponent} from './portfolio/portfolio.component';
 import {CoinsComponent} from './coins/coins.component';
 import {ROUTES} from './app.routes';
 import { AddCoinToPortfolioDialogComponent } from './add-coin-to-portfolio-dialog/add-coin-to-portfolio-dialog.component';
 import {FormsModule} from '@angular/forms';
+import {PortfoliosService} from './shared/services/portfolios/portfolios.service';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import {FormsModule} from '@angular/forms';
     HttpClientModule
   ],
   providers: [
-    CoinsService
+    CoinsService,
+    PortfoliosService
   ],
   entryComponents: [
     AddCoinToPortfolioDialogComponent
