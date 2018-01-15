@@ -8,10 +8,17 @@
     <input matInput [(ngModel)]="portfolio.name" required placeholder="Name">
   </mat-form-field>
   <mat-form-field>
+    <input matInput [(ngModel)]="portfolio.description" placeholder="Description">
+  </mat-form-field>
+
+  <mat-form-field>
     <input matInput [(ngModel)]="portfolio.amount" required placeholder="Amount">
   </mat-form-field>
   <mat-form-field>
-    <input matInput [(ngModel)]="portfolio.description" placeholder="Description">
+    <input matInput [(ngModel)]="portfolio.buyPrice" placeholder="Buy Price">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="portfolio.goalPercentage" placeholder="Goal Percent in Portfolio">
   </mat-form-field>
 </div>
 <div mat-dialog-actions>

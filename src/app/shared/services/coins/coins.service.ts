@@ -5,17 +5,22 @@ import 'rxjs/Rx';
 
 import {Coin} from '../../../coin';
 
-const COINMARKET_URL = 'https://api.coinmarketcap.com/v1/ticker/';
+const COINMARKET_URL = 'https://api.coinmarketcap.com/v1/ticker/?limit=1000';
 
 @Injectable()
 export class CoinsService {
 
+  private coins: Coin[] = [];
   private marketVolume = 0;
 
   constructor(private http: HttpClient) {
   }
 
   list(): Observable<Coin[]> {
+    if (this.coins.length) {
+      return Observable.of(this.coins);
+    }
+
     return this.http.get(COINMARKET_URL)
       .map((resp: any[]) => {
         const list = resp.map((data) => {
@@ -28,6 +33,8 @@ export class CoinsService {
         list.forEach((coin: Coin) => {
           coin.marketShare = (+coin.market_cap_usd) / this.marketVolume;
         });
+
+        this.coins = list;
 
         return list;
       });

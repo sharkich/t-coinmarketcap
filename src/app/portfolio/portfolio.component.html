@@ -1,3 +1,84 @@
-<p>
-  portfolio works!
-</p>
+<mat-card class="app-portfolios mat-elevation-z8">
+
+  <mat-card-title>Coins</mat-card-title>
+
+  <mat-card-content *ngIf="!portfolios.length">
+    <i>Loading...</i>
+  </mat-card-content>
+
+  <div *ngIf="portfolios.length">
+
+    <div class="app-filtering">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+    </div>
+
+    <mat-table #table [dataSource]="matTableDataSource" matSort>
+
+      <ng-container matColumnDef="coinId">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> coinId </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.coinId}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="amount">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Amount </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.amount}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="buyPrice">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Buy Price </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.buyPrice | currency}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="buySum">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Buy Sum </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.buySum | currency}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="currentPrice">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Current Price </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.currentPrice | currency}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="currentSum">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Current Sum </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.currentSum | currency}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="goalPercentage">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Goal Percentage </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.goalPercentage | percent:'1.2'}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="currentPercentage">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Current Percentage </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.currentPercentage | percent:'1.2'}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.description}}</mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="matTableDisplayedColumns"></mat-header-row>
+
+      <mat-row
+        *matRowDef="let row; columns: matTableDisplayedColumns;"
+        (click)="onClickRow(row)"></mat-row>
+
+    </mat-table>
+
+    <p>Goal Percentage Sum: {{goalPercentageSum | percent:'1.2'}}</p>
+    <p>Buy Sum: {{buySum | currency}}</p>
+    <p>Current Sum: {{currentSum | currency}}</p>
+
+  </div>
+
+</mat-card>
+
