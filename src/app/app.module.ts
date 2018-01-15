@@ -5,7 +5,10 @@ import {RouterModule} from '@angular/router';
 
 // Material
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatFormFieldModule, MatSortModule, MatTableModule, MatInputModule, MatCardModule, MatTabsModule} from '@angular/material';
+import {
+  MatFormFieldModule, MatSortModule, MatTableModule, MatInputModule, MatCardModule, MatTabsModule,
+  MatDialogModule, MatButtonModule
+} from '@angular/material';
 import {CdkTableModule} from '@angular/cdk/table';
 
 import {AppComponent} from './app.component';
@@ -14,13 +17,16 @@ import {CoinsService} from './shared/services/coins.service';
 import {PortfolioComponent} from './portfolio/portfolio.component';
 import {CoinsComponent} from './coins/coins.component';
 import {ROUTES} from './app.routes';
+import { AddCoinToPortfolioDialogComponent } from './add-coin-to-portfolio-dialog/add-coin-to-portfolio-dialog.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     ExcelNumberPipe,
     PortfolioComponent,
-    CoinsComponent
+    CoinsComponent,
+    AddCoinToPortfolioDialogComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -29,6 +35,7 @@ import {ROUTES} from './app.routes';
     ),
 
     BrowserModule,
+    FormsModule,
 
     BrowserAnimationsModule,
     MatFormFieldModule,
@@ -38,11 +45,16 @@ import {ROUTES} from './app.routes';
     MatSortModule,
     MatCardModule,
     MatTabsModule,
+    MatDialogModule,
+    MatButtonModule,
 
     HttpClientModule
   ],
   providers: [
     CoinsService
+  ],
+  entryComponents: [
+    AddCoinToPortfolioDialogComponent
   ],
   bootstrap: [AppComponent]
 })

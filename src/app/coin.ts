@@ -18,7 +18,7 @@ export class Coin {
   marketShare: number;
   image: string;
 
-  constructor(data) {
+  constructor(data: any = {}) {
     this.id = data.id;
     this.name = data.name;
     this.symbol = data.symbol;
