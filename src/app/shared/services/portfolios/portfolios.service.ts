@@ -197,6 +197,9 @@ export class PortfoliosService {
       portfolio.currentSum = portfolio.amount * portfolio.currentPrice;
       portfolio.buySum = portfolio.amount * portfolio.buyPrice;
     });
+    this.portfolios.map((portfolio) => {
+      portfolio.currentPercentage = portfolio.currentSum / this.getCurrentSum();
+    });
   }
 
   getGoalPercentageSum(): number {
@@ -209,6 +212,13 @@ export class PortfoliosService {
 
   getCurrentSum(): number {
     return this.portfolios.reduce((sum, portfolio) => sum + portfolio.currentSum, 0);
+  }
+
+  recalculateBuyPrices(buySum: number) {
+    this.portfolios.map((portfolio) => {
+      portfolio.buySum = buySum * portfolio.currentPercentage;
+      portfolio.buyPrice = portfolio.buySum / portfolio.amount;
+    });
   }
 
 }

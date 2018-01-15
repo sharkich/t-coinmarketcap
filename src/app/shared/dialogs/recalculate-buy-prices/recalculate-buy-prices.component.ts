@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {MatDialogRef} from '@angular/material';
-import {AddCoinToPortfolioDialogComponent} from '../add-coin-to-portfolio-dialog/add-coin-to-portfolio-dialog.component';
 
 @Component({
   selector: 'app-recalculate-buy-prices',

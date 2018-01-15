@@ -16,9 +16,18 @@
 
     <mat-table #table [dataSource]="matTableDataSource" matSort>
 
+      <ng-container matColumnDef="image">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <img [src]="element.coin?.image" width="32" height="32" [alt]="element.coin?.name">
+        </mat-cell>
+      </ng-container>
+
       <ng-container matColumnDef="coinId">
         <mat-header-cell *matHeaderCellDef mat-sort-header> coinId</mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.coinId}}</mat-cell>
+        <mat-cell *matCellDef="let element">
+          {{element.coin?.name || element.coinId}}
+        </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="name">
