@@ -20,6 +20,12 @@
         <mat-header-cell *matHeaderCellDef mat-sort-header> Rank</mat-header-cell>
         <mat-cell *matCellDef="let element">
           {{element.rank}}
+          <span
+            class="rank-change"
+            *ngIf="element.rankChange"
+            [ngClass]="{'inc': element.rankChange > 0, 'dec': element.rankChange < 0}">
+            <span *ngIf="element.rankChange > 0">&uarr; +</span><span *ngIf="element.rankChange < 0">&darr;</span>{{element.rankChange}}
+          </span>
         </mat-cell>
       </ng-container>
 

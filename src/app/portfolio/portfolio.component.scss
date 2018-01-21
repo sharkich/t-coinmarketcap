@@ -10,6 +10,8 @@
 
 .portfolio-summary {
   display: flex;
+  justify-content: space-around;
+
   &>mat-card {
     margin-right: 24px;
   }
@@ -20,6 +22,13 @@
     }
   }
   .current-sum {}
+
+  .rebalance {
+    text-align: center;
+    .descr {
+      font-size: 80%;
+    }
+  }
 }
 
 
@@ -51,20 +60,8 @@ mat-row:hover {
   text-align: right;
 }
 
-.sums, .footer {
+.footer {
   margin-top: 20px;
-}
-
-.inc {
-  color: green;
-}
-
-.dec {
-  color: red;
-}
-
-.norb {
-  white-space: nowrap;
 }
 
 .coin-symbol {

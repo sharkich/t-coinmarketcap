@@ -17,6 +17,7 @@ export class Coin {
 
   marketShare: number;
   image: string;
+  rankChange: number;
 
   constructor(data: any = {}) {
     this.id = data.id;
@@ -37,5 +38,6 @@ export class Coin {
 
     this.marketShare = +data.marketShare;
     this.image = `https://files.coinmarketcap.com/static/img/coins/32x32/${this.id}.png`;
+    this.rankChange = data.rankChange;
   }
 }

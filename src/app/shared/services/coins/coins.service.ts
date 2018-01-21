@@ -26,7 +26,14 @@ export class CoinsService {
         const list = resp.map((data) => {
           const coin = new Coin(data);
           this.marketVolume += (+coin.market_cap_usd);
-          return coin;
+          if (coin.id === 'tron') {
+            coin.rankChange = 34;
+          } else if (coin.id === 'bitcoin-cash') {
+            coin.rankChange = 2;
+          } else if (coin.id === 'cardano') {
+            coin.rankChange = -3;
+          }
+            return coin;
         });
 
         list.forEach((coin: Coin) => {

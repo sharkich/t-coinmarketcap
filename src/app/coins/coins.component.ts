@@ -10,7 +10,7 @@ import {PortfoliosService} from '../shared/services/portfolios/portfolios.servic
 @Component({
   selector: 'app-coins',
   templateUrl: './coins.component.html',
-  styleUrls: ['./coins.component.scss']
+  styleUrls: ['../app.component.scss', './coins.component.scss']
 })
 export class CoinsComponent implements OnInit {
 

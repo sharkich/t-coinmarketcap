@@ -1,3 +1,33 @@
 .text-right {
   text-align: right;
 }
+
+.inc {
+  color: green;
+}
+
+.dec {
+  color: red;
+}
+
+.norb {
+  white-space: nowrap;
+}
+
+
+// For buttons:
+.primary-color {
+  color: #3F51B5!important;
+}
+.accent-color {
+  color: #FF4081!important;
+}
+.background-primary-color {
+  background-color: #3F51B5!important;
+}
+.background-accent-color {
+  background-color: #FF4081!important;
+}
+.white-text {
+  color: #FFF!important;
+}

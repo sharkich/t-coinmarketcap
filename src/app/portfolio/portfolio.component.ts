@@ -10,7 +10,7 @@ import {RecalculateBuyPricesComponent} from '../shared/dialogs/recalculate-buy-p
 @Component({
   selector: 'app-portfolio',
   templateUrl: './portfolio.component.html',
-  styleUrls: ['./portfolio.component.scss']
+  styleUrls: ['../app.component.scss', './portfolio.component.scss']
 })
 export class PortfolioComponent implements OnInit {
 

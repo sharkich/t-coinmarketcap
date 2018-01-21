@@ -21,31 +21,40 @@
       </span>
   </p-->
 
-<div class="portfolio-summary">
-  <mat-card class="buy-sum">
-    <mat-card-title>Invest cost</mat-card-title>
-    <mat-card-content><strong>{{ buySum | currency }}</strong></mat-card-content>
-  </mat-card>
-  <mat-card class="diff">
-    <mat-card-title>
-      <span *ngIf="buySum <= currentSum">Profit</span>
-      <span *ngIf="buySum > currentSum">Loss</span>
-    </mat-card-title>
-    <mat-card-content>
-      <strong class="sum" [ngClass]="{'inc': buySum < currentSum, 'dec': buySum > currentSum}">
-        <span *ngIf="buySum < currentSum">+</span>{{(currentSum - buySum) | currency}}
-      </strong>
+  <div class="portfolio-summary">
+    <mat-card class="buy-sum">
+      <mat-card-title>Invest cost</mat-card-title>
+      <mat-card-content><strong>{{ buySum | currency }}</strong></mat-card-content>
+    </mat-card>
+    <mat-card class="diff">
+      <mat-card-title>
+        <span *ngIf="buySum <= currentSum">Profit</span>
+        <span *ngIf="buySum > currentSum">Loss</span>
+      </mat-card-title>
+      <mat-card-content>
+        <strong class="sum" [ngClass]="{'inc': buySum < currentSum, 'dec': buySum > currentSum}">
+          <span *ngIf="buySum < currentSum">+</span>{{(currentSum - buySum) | currency}}
+        </strong>
 
-      <span class="percent" [ngClass]="{'inc': buySum < currentSum, 'dec': buySum > currentSum}">
+        <span class="percent" [ngClass]="{'inc': buySum < currentSum, 'dec': buySum > currentSum}">
         <span *ngIf="currentSum < buySum">-</span><span *ngIf="currentSum > buySum">+</span>{{ (currentSum/buySum - 1) | percent:'1.2'}}
       </span>
-    </mat-card-content>
-  </mat-card>
-  <mat-card class="current-sum">
-    <mat-card-title>Current cost</mat-card-title>
-    <mat-card-content><strong>{{ currentSum | currency }}</strong></mat-card-content>
-  </mat-card>
-</div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="current-sum">
+      <mat-card-title>Current cost</mat-card-title>
+      <mat-card-content><strong>{{ currentSum | currency }}</strong></mat-card-content>
+    </mat-card>
+
+    <mat-card class="rebalance">
+      <mat-card-title>Rebalance</mat-card-title>
+      <mat-card-content>
+        <button mat-button class="background-accent-color white-text">Do rebalance</button>
+        <br>
+        <span class="descr">Previous was 6 days ago</span>
+      </mat-card-content>
+    </mat-card>
+  </div>
 
   <div *ngIf="portfolios.length">
 
@@ -115,7 +124,8 @@
           <br>
           <span class="norb calc-percentage">
             {{element.goalPercentage | percent:'1.2'}}
-            <span [ngClass]="{'inc': element.goalPercentage < element.currentPercentage, 'dec': element.goalPercentage > element.currentPercentage}">
+            <span
+              [ngClass]="{'inc': element.goalPercentage < element.currentPercentage, 'dec': element.goalPercentage > element.currentPercentage}">
               <span *ngIf="element.goalPercentage < element.currentPercentage">+</span>{{(element.currentPercentage - element.goalPercentage) | percent:'1.2'}}
             </span>
           </span>
@@ -135,7 +145,8 @@
           <br>
           <span class="norb calc-percentage">
             {{element.buyPrice | currency}}
-            <span [ngClass]="{'inc': element.buyPrice < element.currentPrice, 'dec': element.buyPrice > element.currentPrice}">
+            <span
+              [ngClass]="{'inc': element.buyPrice < element.currentPrice, 'dec': element.buyPrice > element.currentPrice}">
               <span *ngIf="element.buyPrice < element.currentPrice">+</span>{{(element.currentPrice - element.buyPrice) | currency}}
             </span>
           </span>
@@ -194,12 +205,12 @@
 
 </mat-card>
 
-<mat-card class="sums">
-  <p>Goal Percentage Sum: {{goalPercentageSum | percent:'1.2'}}</p>
-  <p>Buy Sum: {{buySum | currency}}</p>
-  <p>Current Sum: {{currentSum | currency}}</p>
-</mat-card>
-
 <mat-card class="footer">
-  <button color="primary" mat-button (click)="onRecalculateBuyPrices()">Recalculate buy prices</button>
+  <button
+    mat-button
+    class="background-primary-color white-text"
+    (click)="onRecalculateBuyPrices()"
+  >
+    Recalculate buy prices
+  </button>
 </mat-card>

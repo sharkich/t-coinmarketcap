@@ -37,6 +37,14 @@ mat-row:hover {
   visibility: hidden;
 }
 
-.cdk-column-image, .cdk-column-rank {
+.cdk-column-image {
   flex: 0.3;
+}
+
+.cdk-column-rank {
+  flex: 0.4;
+}
+
+.rank-change {
+  font-size: 80%;
 }
