@@ -1,6 +1,6 @@
 <mat-card class="app-portfolios mat-elevation-z8">
 
-  <mat-card-title>Coins</mat-card-title>
+  <mat-card-title>Portfolio</mat-card-title>
 
   <mat-card-content *ngIf="!portfolios.length">
     <i>Loading...</i>
@@ -38,6 +38,38 @@
       <ng-container matColumnDef="amount">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Amount</mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.amount}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="sum">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Sum</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="norb">
+            {{element.buySum | currency}}
+            <span [ngClass]="{'inc': element.buySum < element.currentSum, 'dec': element.buySum > element.currentSum}">
+              <span *ngIf="element.buySum < element.currentSum">+</span>
+              {{(element.currentSum - element.buySum) | currency}}
+            </span>
+          </span>
+          <span class="norb">
+            = {{element.currentSum | currency}}
+          </span>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="percentage">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> %</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <span class="norb">
+            {{element.goalPercentage | percent:'1.2'}}
+            <span [ngClass]="{'inc': element.goalPercentage < element.currentPercentage, 'dec': element.goalPercentage > element.currentPercentage}">
+              <span *ngIf="element.goalPercentage < element.currentPercentage">+</span>
+              {{(element.currentPercentage - element.goalPercentage) | percent:'1.2'}}
+            </span>
+          </span>
+          <span class="norb">
+            = {{element.currentPercentage | percent:'1.2'}}
+          </span>
+        </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="buyPrice">

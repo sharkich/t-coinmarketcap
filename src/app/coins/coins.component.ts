@@ -31,6 +31,10 @@ export class CoinsComponent implements OnInit {
       this.matTableDataSource = new MatTableDataSource<Coin>(this.coins);
       this.matTableDataSource.sort = this.sort;
     });
+
+    this.portfoliosService.list().subscribe((portfolios: Portfolio[]) => {
+      console.log('portfolios', portfolios);
+    });
   }
 
   applyFilter(filterValue: string) {
@@ -47,6 +51,10 @@ export class CoinsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((portfolio: Portfolio) => {
       this.portfoliosService.add(portfolio);
     });
+  }
+
+  isCoinInPortfolio(coin: Coin) {
+    return this.portfoliosService.isInPortfolio(coin);
   }
 
 }

@@ -14,21 +14,21 @@ export class PortfoliosService {
       amount: 0.03442202,
       coinId: 'bitcoin',
       goalPercentage: 0.20,
-      buyPrice: 0
+      buyPrice: 17345
     }),
     new Portfolio({
       name: 'Binance',
       amount: 0.00621744,
       coinId: 'bitcoin',
       goalPercentage: 0.035,
-      buyPrice: 0
+      buyPrice: 13400
     }),
     new Portfolio({
       name: 'blockchain.info',
       amount: 0.00244395,
       coinId: 'bitcoin',
       goalPercentage: 0.015,
-      buyPrice: 0
+      buyPrice: 9765
     }),
 
     new Portfolio({
@@ -36,133 +36,105 @@ export class PortfoliosService {
       amount: 0.24998806,
       coinId: 'ethereum',
       goalPercentage: 0.05,
-      buyPrice: 0
+      buyPrice: 999
     }),
     new Portfolio({
       name: 'Binance',
       amount: 0.00099262,
       coinId: 'ethereum',
       goalPercentage: 0.1,
-      buyPrice: 0
+      buyPrice: 1100
     }),
 
     new Portfolio({
       name: 'Binance',
       amount: 77.00,
       coinId: 'ripple',
-      goalPercentage: 0.10,
-      buyPrice: 0
+      goalPercentage: 0.05,
+      buyPrice: 1.5
     }),
     new Portfolio({
       name: 'WEX',
       amount: 0.0499,
       coinId: 'bitcoin-cash',
       goalPercentage: 0.05,
-      buyPrice: 0
+      buyPrice: 1800
     }),
     new Portfolio({
-      name: 'hz',
+      name: 'HitBTC',
       amount: 0.0499,
       coinId: 'nem',
       goalPercentage: 0.05,
-      buyPrice: 0
+      buyPrice: 1
     }),
     new Portfolio({
       name: 'Binance',
       amount: 122.00,
       coinId: 'cardano',
       goalPercentage: 0.05,
-      buyPrice: 0
+      buyPrice: 0.8
     }),
     new Portfolio({
       name: 'WEX',
       amount: 0.1996,
       coinId: 'litecoin',
       goalPercentage: 0.025,
-      buyPrice: 0
+      buyPrice: 150
     }),
     new Portfolio({
       name: 'Binance',
       amount: 0.2300,
       coinId: 'litecoin',
       goalPercentage: 0.025,
-      buyPrice: 0
+      buyPrice: 139
     }),
     new Portfolio({
       name: 'Binance',
       amount: 29.97,
       coinId: 'iota',
       goalPercentage: 0.05,
-      buyPrice: 0
+      buyPrice: 2.55
     }),
     new Portfolio({
       name: 'Binance',
       amount: 0.85,
       coinId: 'neo',
       goalPercentage: 0.05,
-      buyPrice: 0
+      buyPrice: 140
     }),
     new Portfolio({
       name: 'Binance',
       amount: 5.00,
       coinId: 'icon',
       goalPercentage: 0.05,
-      buyPrice: 0
+      buyPrice: 10
     }),
     new Portfolio({
       name: 'WEX',
       amount: 0.09980001,
       coinId: 'zcash',
       goalPercentage: 0.05,
-      buyPrice: 0
+      buyPrice: 500
     }),
     new Portfolio({
       name: 'Binance',
       amount: 8.00,
       coinId: 'waves',
       goalPercentage: 0.05,
-      buyPrice: 0
+      buyPrice: 8.01
     }),
     new Portfolio({
       name: 'Binance',
       amount: 9.11142662,
       coinId: 'binance-coin',
       goalPercentage: 0.05,
-      buyPrice: 0
+      buyPrice: 11
     }),
     new Portfolio({
       name: 'WEX',
       amount: 0,
       coinId: 'dash',
       goalPercentage: 0.05,
-      buyPrice: 0
-    }),
-    new Portfolio({
-      name: 'WEX',
-      amount: 0.0298,
-      coinId: 'dashcoin',
-      goalPercentage: 0,
-      buyPrice: 0
-    }),
-    new Portfolio({
-      name: 'Binance',
-      amount: 5.00,
-      coinId: 'raiden-network-token',
-      goalPercentage: 0,
-      buyPrice: 0
-    }),
-    new Portfolio({
-      name: 'Binance',
-      amount: 4.00,
-      coinId: 'monaco',
-      goalPercentage: 0,
-      buyPrice: 0
-    }),
-    new Portfolio({
-      name: 'Binance',
-      amount: 2.79,
-      coinId: 'eidoo',
-      goalPercentage: 0,
       buyPrice: 0
     })
   ];
@@ -219,6 +191,12 @@ export class PortfoliosService {
       portfolio.buySum = buySum * portfolio.currentPercentage;
       portfolio.buyPrice = portfolio.buySum / portfolio.amount;
     });
+  }
+
+  isInPortfolio(coin: Coin) {
+    return this.portfolios
+      .map((portfolio) => portfolio.coin.id)
+      .indexOf(coin.id) !== -1;
   }
 
 }

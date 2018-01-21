@@ -17,8 +17,10 @@
     <mat-table #table [dataSource]="matTableDataSource" matSort>
 
       <ng-container matColumnDef="rank">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Rank </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.rank}}</mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Rank</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{element.rank}}
+        </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="image">
@@ -29,34 +31,47 @@
       </ng-container>
 
       <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef mat-sort-header class="coin-name"> Name </mat-header-cell>
-        <mat-cell *matCellDef="let element" class="coin-name"> {{element.name}}</mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="coin-name"> Name</mat-header-cell>
+        <mat-cell *matCellDef="let element"class="coin-name">
+          {{element.name}}
+        </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="symbol">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.symbol}}</mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Symbol</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{element.symbol}}
+        </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="price_usd">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Price </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Price</mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.price_usd | currency}}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="marketShare">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Market Share </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.marketShare | percent:'1.4'}}</mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Market Share</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{element.marketShare | percent:'1.4'}}
+        </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="buttons">
         <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
-        <mat-cell *matCellDef="let element" class="buttons">
-          <button mat-icon-button (click)="onClickAdd(element)"><i class="material-icons">add</i></button>
+        <mat-cell
+          *matCellDef="let element"
+          class="buttons">
+          <button mat-icon-button (click)="onClickAdd(element)">
+            <i class="material-icons">add</i>
+          </button>
         </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="matTableDisplayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: matTableDisplayedColumns;"></mat-row>
+      <mat-row
+        *matRowDef="let row; columns: matTableDisplayedColumns;"
+        [ngClass]="{'in-portfolio': isCoinInPortfolio(row)}"
+      ></mat-row>
 
     </mat-table>
 
