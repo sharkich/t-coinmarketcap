@@ -34,7 +34,7 @@ import {RecalculateBuyPricesComponent} from './shared/dialogs/recalculate-buy-pr
   imports: [
     RouterModule.forRoot(
       ROUTES,
-      {enableTracing: true} // <-- debugging purposes only
+      {enableTracing: false} // <-- debugging purposes only
     ),
 
     BrowserModule,

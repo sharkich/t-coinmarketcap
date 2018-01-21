@@ -30,7 +30,9 @@ export class Portfolio {
     this.currentSum = +data.currentSum || 0;
 
     // private
-    this.coin = data.coin;
+    if (data.coin) {
+      this.coin = new Coin(data.coin);
+    }
   }
 
   get isValid(): boolean {

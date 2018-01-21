@@ -5,7 +5,7 @@ import 'rxjs/Rx';
 
 import {Coin} from '../../../coin';
 
-const COINMARKET_URL = 'https://api.coinmarketcap.com/v1/ticker/?limit=100';
+const COINMARKET_URL = '/assets/coins/limit100.json'; // https://api.coinmarketcap.com/v1/ticker/?limit=100
 
 @Injectable()
 export class CoinsService {
@@ -25,7 +25,6 @@ export class CoinsService {
       .map((resp: any[]) => {
         const list = resp.map((data) => {
           const coin = new Coin(data);
-          coin.image = `https://files.coinmarketcap.com/static/img/coins/32x32/${coin.id}.png`;
           this.marketVolume += (+coin.market_cap_usd);
           return coin;
         });

@@ -36,3 +36,7 @@ mat-row:hover {
 .my-coin--off {
   visibility: hidden;
 }
+
+.cdk-column-image, .cdk-column-rank {
+  flex: 0.3;
+}

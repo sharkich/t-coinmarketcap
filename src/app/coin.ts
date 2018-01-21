@@ -36,6 +36,6 @@ export class Coin {
     this.last_updated = new Date(+data.last_updated);
 
     this.marketShare = +data.marketShare;
-    this.image = data.image;
+    this.image = `https://files.coinmarketcap.com/static/img/coins/32x32/${this.id}.png`;
   }
 }

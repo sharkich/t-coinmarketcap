@@ -1,0 +1,113 @@
+[
+  {
+    "name": "WEX, Binance, blockchain.info",
+    "amount": 2.03442202,
+    "coinId": "bitcoin",
+    "goalPercentage": 0.20,
+    "buyPrice": 10345
+  },
+  {
+    "name": "WEX, Binance",
+    "amount": 1.24998806,
+    "coinId": "ethereum",
+    "goalPercentage": 0.05,
+    "buyPrice": 999
+  },
+  {
+    "name": "Binance",
+    "amount": 77.00,
+    "coinId": "ripple",
+    "goalPercentage": 0.05,
+    "buyPrice": 1.5
+  },
+  {
+    "name": "WEX",
+    "amount": 0.0499,
+    "coinId": "bitcoin-cash",
+    "goalPercentage": 0.05,
+    "buyPrice": 1800
+  },
+  {
+    "name": "HitBTC",
+    "amount": 0.0499,
+    "coinId": "nem",
+    "goalPercentage": 0.05,
+    "buyPrice": 1
+  },
+  {
+    "name": "Binance",
+    "amount": 122.00,
+    "coinId": "cardano",
+    "goalPercentage": 0.05,
+    "buyPrice": 0.8
+  },
+  {
+    "name": "WEX",
+    "amount": 0.1996,
+    "coinId": "litecoin",
+    "goalPercentage": 0.025,
+    "buyPrice": 150
+  },
+  {
+    "name": "Binance",
+    "amount": 0.2300,
+    "coinId": "litecoin",
+    "goalPercentage": 0.025,
+    "buyPrice": 139
+  },
+  {
+    "name": "Binance",
+    "amount": 29.97,
+    "coinId": "iota",
+    "goalPercentage": 0.05,
+    "buyPrice": 2.55
+  },
+  {
+    "name": "Binance",
+    "amount": 0.85,
+    "coinId": "neo",
+    "goalPercentage": 0.05,
+    "buyPrice": 140
+  },
+  {
+    "name": "Binance",
+    "amount": 5.00,
+    "coinId": "icon",
+    "goalPercentage": 0.05,
+    "buyPrice": 10
+  },
+  {
+    "name": "WEX",
+    "amount": 0.09980001,
+    "coinId": "zcash",
+    "goalPercentage": 0.05,
+    "buyPrice": 500
+  },
+  {
+    "name": "Binance",
+    "amount": 8.00,
+    "coinId": "waves",
+    "goalPercentage": 0.05,
+    "buyPrice": 8.01
+  },
+  {
+    "name": "Binance",
+    "amount": 9.11142662,
+    "coinId": "binance-coin",
+    "goalPercentage": 0.05,
+    "buyPrice": 11
+  },
+  {
+    "name": "Waves",
+    "amount": 12,
+    "coinId": "CryptoBazar",
+    "goalPercentage": 0.1,
+    "buyPrice": 89,
+    "coin": {
+      "name": "CryptoBazar",
+      "id": "CryptoBazar",
+      "symbol": "CB",
+      "price_usd": "104"
+    }
+  }
+]
