@@ -6,6 +6,47 @@
     <i>Loading...</i>
   </mat-card-content>
 
+  <!--p>
+    <strong>{{currentSum | currency}}</strong>
+    <i>
+      (
+      {{buySum | currency}}
+      <span [ngClass]="{'inc': buySum < currentSum, 'dec': buySum > currentSum}">
+          <span *ngIf="buySum < currentSum">+</span>{{(currentSum - buySum) | currency}}
+        </span>
+      )
+    </i>
+    <span [ngClass]="{'inc': buySum < currentSum, 'dec': buySum > currentSum}">
+        <span *ngIf="currentSum < buySum">-</span><span *ngIf="currentSum > buySum">+</span>{{ (1 - currentSum/buySum) | percent:'1.2'}}
+      </span>
+  </p-->
+
+<div class="portfolio-summary">
+  <mat-card class="buy-sum">
+    <mat-card-title>Invest cost</mat-card-title>
+    <mat-card-content><strong>{{ buySum | currency }}</strong></mat-card-content>
+  </mat-card>
+  <mat-card class="diff">
+    <mat-card-title>
+      <span *ngIf="buySum <= currentSum">Profit</span>
+      <span *ngIf="buySum > currentSum">Loss</span>
+    </mat-card-title>
+    <mat-card-content>
+      <strong class="sum" [ngClass]="{'inc': buySum < currentSum, 'dec': buySum > currentSum}">
+        <span *ngIf="buySum < currentSum">+</span>{{(currentSum - buySum) | currency}}
+      </strong>
+
+      <span class="percent" [ngClass]="{'inc': buySum < currentSum, 'dec': buySum > currentSum}">
+        <span *ngIf="currentSum < buySum">-</span><span *ngIf="currentSum > buySum">+</span>{{ (currentSum/buySum - 1) | percent:'1.2'}}
+      </span>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="current-sum">
+    <mat-card-title>Current cost</mat-card-title>
+    <mat-card-content><strong>{{ currentSum | currency }}</strong></mat-card-content>
+  </mat-card>
+</div>
+
   <div *ngIf="portfolios.length">
 
     <div class="app-filtering">
@@ -24,51 +65,81 @@
       </ng-container>
 
       <ng-container matColumnDef="coinId">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> coinId</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Coin
+        </mat-header-cell>
         <mat-cell *matCellDef="let element">
-          {{element.coin?.name || element.coinId}}
+          <strong>{{element.coin?.name || element.coinId}}</strong><br>
+          {{element.name}}
         </mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Name</mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.name}}</mat-cell>
-      </ng-container>
-
       <ng-container matColumnDef="amount">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Amount</mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.amount}}</mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Amount
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{element.amount}}
+          <span class="coin-symbol">{{element.coin?.symbol}}</span>
+        </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="sum">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Sum</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Sum
+        </mat-header-cell>
         <mat-cell *matCellDef="let element">
-          <span class="norb">
+          <strong class="norb current-sum">
+            {{element.currentSum | currency}}
+          </strong>
+
+          <br>
+
+          <span class="norb calc-sum">
             {{element.buySum | currency}}
             <span [ngClass]="{'inc': element.buySum < element.currentSum, 'dec': element.buySum > element.currentSum}">
-              <span *ngIf="element.buySum < element.currentSum">+</span>
-              {{(element.currentSum - element.buySum) | currency}}
+              <span *ngIf="element.buySum < element.currentSum">+</span>{{(element.currentSum - element.buySum) | currency}}
             </span>
           </span>
-          <span class="norb">
-            = {{element.currentSum | currency}}
-          </span>
+
         </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="percentage">
         <mat-header-cell *matHeaderCellDef mat-sort-header> %</mat-header-cell>
         <mat-cell *matCellDef="let element">
-          <span class="norb">
+          <strong class="norb current-percentage">
+            {{element.currentPercentage | percent:'1.2'}}
+          </strong>
+
+          <br>
+          <span class="norb calc-percentage">
             {{element.goalPercentage | percent:'1.2'}}
             <span [ngClass]="{'inc': element.goalPercentage < element.currentPercentage, 'dec': element.goalPercentage > element.currentPercentage}">
-              <span *ngIf="element.goalPercentage < element.currentPercentage">+</span>
-              {{(element.currentPercentage - element.goalPercentage) | percent:'1.2'}}
+              <span *ngIf="element.goalPercentage < element.currentPercentage">+</span>{{(element.currentPercentage - element.goalPercentage) | percent:'1.2'}}
             </span>
           </span>
-          <span class="norb">
-            = {{element.currentPercentage | percent:'1.2'}}
+
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Price
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <strong class="norb current-percentage">
+            {{element.currentPrice | currency}}
+          </strong>
+
+          <br>
+          <span class="norb calc-percentage">
+            {{element.buyPrice | currency}}
+            <span [ngClass]="{'inc': element.buyPrice < element.currentPrice, 'dec': element.buyPrice > element.currentPrice}">
+              <span *ngIf="element.buyPrice < element.currentPrice">+</span>{{(element.currentPrice - element.buyPrice) | currency}}
+            </span>
           </span>
+
         </mat-cell>
       </ng-container>
 

@@ -20,8 +20,8 @@ export class PortfolioComponent implements OnInit {
   portfolios: Portfolio[] = [];
 
   @ViewChild(MatSort) sort: MatSort;
-  // , 'buyPrice', 'currentPrice', 'goalPercentage', 'description', 'buySum', 'currentSum', 'currentPercentage'
-  matTableDisplayedColumns = ['image', 'coinId', 'name', 'amount', 'sum', 'percentage', 'buttons'];
+  // , 'buyPrice', 'currentPrice', 'goalPercentage', 'name', 'description', 'buySum', 'currentSum', 'currentPercentage'
+  matTableDisplayedColumns = ['image', 'coinId', 'amount', 'price', 'sum', 'percentage', 'buttons'];
   matTableDataSource: MatTableDataSource<Portfolio> = new MatTableDataSource<Portfolio>(this.portfolios);
 
   constructor(private portfoliosService: PortfoliosService,

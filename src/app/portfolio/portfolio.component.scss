@@ -8,6 +8,21 @@
   min-width: 300px;
 }
 
+.portfolio-summary {
+  display: flex;
+  &>mat-card {
+    margin-right: 24px;
+  }
+  .buy-sum {}
+  .diff {
+    .percent {
+      font-size: 80%;
+    }
+  }
+  .current-sum {}
+}
+
+
 .app-filtering {
   min-height: 64px;
   padding: 8px 24px 0;
@@ -20,6 +35,16 @@
 
 mat-row:hover {
   background: #E8F5E9;
+}
+
+.cdk-column-image {
+  flex: 0.3;
+}
+.cdk-column-coinId {
+  flex: 3;
+}
+.cdk-column-buttons {
+  flex: 0.3;
 }
 
 .buttons {
@@ -40,4 +65,12 @@ mat-row:hover {
 
 .norb {
   white-space: nowrap;
+}
+
+.coin-symbol {
+  color: #666;
+}
+
+.calc-sum, .calc-percentage {
+  font-size: 80%;
 }

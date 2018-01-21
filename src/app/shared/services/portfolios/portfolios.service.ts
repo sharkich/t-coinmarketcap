@@ -11,10 +11,10 @@ export class PortfoliosService {
   private portfolios: Portfolio[] = [
     new Portfolio({
       name: 'WEX',
-      amount: 0.03442202,
+      amount: 2.03442202,
       coinId: 'bitcoin',
       goalPercentage: 0.20,
-      buyPrice: 17345
+      buyPrice: 10345
     }),
     new Portfolio({
       name: 'Binance',
